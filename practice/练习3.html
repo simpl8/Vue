@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>选中后颜色改变</title>
+    <style>
+      .colorful {
+        color:bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(item, index) in movies" v-bind:class="{colorful: currentIndex === index}" 
+        @click="click(index)">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          currentIndex: -1,
+          movies: ['盗梦空间', '复仇者联盟', '第一滴血', '罗马假日']
+        },
+        methods: {
+          click(index) {
+            this.currentIndex = index
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id='app'>
+      <!--v-once指令 只改变一次数据，console里用app.message=‘value’不会改变内容-->
+      <h2 v-once>{{ message}}</h2>
+      <h2>{{ message }}</h2>
+      <!--v-html指令 直接将<a>标签的形式进行html解析-->
+      <h2 v-html="url"></h2>
+      <!--v-pre指令 不将{{}}进行vue解析，直接显示原意-->
+      <h2 v-pre>{{ message }}</h2>
+      <!--cloak指令-->
+      <h2 cloak></h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data:{
+          message: 'hello',
+          url: "<a href='http://www.baidu.com'>百度一下</a>"
+        }
+      })
+    </script>
+  </body>
+</html>

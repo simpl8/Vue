@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>父子组件props属性传递数据</title>
+  </head>
+  <body>
+    <div id="app">
+      <cpn :cpn_message="message" :cpn_books="books"></cpn>
+
+    </div>
+    <template id="booklist">
+      <div>
+        <h3>{{ cpn_message }}</h3>
+        <ul>
+          <li v-for="item in cpn_books">{{ item }}</li>
+        </ul>
+      </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+      const cpn = {
+        template: "#booklist",
+        props: {
+          cpn_message:{
+            type: String
+          },
+          cpn_books: {
+            type: Array
+          }
+        }
+      }
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "最喜欢的书",
+          books: ['洛丽塔', '老人与海', '素年锦时']
+        },
+        components: {
+          cpn
+        }
+      })
+    </script>
+  </body>
+</html>

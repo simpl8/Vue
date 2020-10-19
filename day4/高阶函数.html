@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>高阶函数</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2> {{ totalPrice | showPrice }} </h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          books: [
+            {name: '《java》', price: 15.45, count: 1},
+            {name: '《python》', price: 15.45, count: 1},
+            {name: '《vue》', price: 15.45, count: 1},
+            {name: '《html》', price: 15.45, count: 1},
+          ]
+        },
+        computed: {
+          totalPrice() {
+            return this.books.reduce(function(preValue, book) {
+              return preValue + book.price*book.count
+            }, 0)
+          }
+        },
+        filters: {
+          showPrice(price) {
+            return '￥' + price.toFixed(2)
+          }
+        }
+
+      })
+    </script>
+  </body>
+</html>

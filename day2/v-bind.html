@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id='app'>
+      <!--v-bind用于以变量的方式动态显示引用的内容，语法糖写法(:)-->
+      <img v-bind:src="imgUrl" alt=''>
+      <!--语法糖写法，直接用（:）-->
+      <a :href="URL">百度</a>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          imgUrl: 'C:/Users/86186/Pictures/爱壁纸UWP/美女/美女 - 54.jpg',
+          URL: "https://www.baidu.com"
+         }
+      })
+    </script>
+  </body>
+</html>

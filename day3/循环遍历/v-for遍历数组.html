@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!--key的作用是为了高效的使用虚拟DOM-->
+        <li v-for="(item, index) in books" key="item">{{ index + 1}} {{ item }}</li>
+        <li v-for="(value, key) in persions" >{{ key }}: {{ value }}</li>
+      </ul>
+    </div>
+    <script src="/Vue/js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: 'Hello Vue',
+          books: ['《简爱》', '《老人与海》', '《飘》', '《时间简史》', '《盛夏方程式》'],
+          persions: {
+            name: "Kobe",
+            age: 40,
+            sex: "male",
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

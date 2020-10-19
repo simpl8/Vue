@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="app">
+      <cpn :cpn_message="message" :cpn_fruit="fruit"></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <h3>{{ cpn_message }}</h3>
+        <ul>
+          <li v-for="item in cpn_fruit">{{ item }}</li>
+        </ul>
+      </div>
+
+    </template>
+    <script src="/Vue/js/vue.js"></script>
+    <script>
+      const cpn = {
+        template: "#cpn",
+        props: {
+          cpn_message: {
+            type: String
+          },
+          cpn_fruit: {
+            type: Array,
+            default: []
+          }
+        }
+      }
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: '喜欢吃的水果',
+          fruit: ['葡萄', '香橙', '香蕉']
+        },
+        components: {
+          cpn
+        }
+      })
+    </script>
+  </body>
+</html>

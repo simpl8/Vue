@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>计算属性复杂使用</title>
+  </head>
+  <body>
+    <div id='app'>
+      <ul>
+        <li v-for="item in books">{{ item['name'] }}</li>
+      </ul>
+      <p>总价格：{{ sumPrice }}</p>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          books: [
+            {id: 001, name: "简爱", price: 25},
+            {id: 002, name: "海边的卡夫卡", price: 30},
+            {id: 003, name: "老人与海", price: 25},
+            {id: 004, name: "悲惨世界", price: 38}
+          ]
+        },
+        // computed计算属性，具有缓存性值，可提高效率
+        computed: {
+          sumPrice: function(){
+            let result = 0
+            for (let i = 0; i < this.books.length; i++) {
+              result += this.books[i].price
+            }
+            return result
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
