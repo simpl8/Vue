@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<h2>{{ message }}</h2>
+	<!--使用计算属性的时候直接使用computed里函数的函数名即可-->
+	<label>{{ fullName }}</label><br>
+	<label>{{ allName }}</label>
+	<h2>{{ totalPrices }}</h2>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+						firstName: "Tracy",
+						lastName: "macGrady",
+						books: [
+								{id: 1, name:"《算法实例python》", price: 110.47},
+								{id: 2, name:"《go语言实战》", price: 100.45},
+								{id: 3, name:"《流畅的python》", price: 95.89},
+								{id: 4, name:"《Unix编程艺术》", price: 85},
+
+						]
+        },
+				// 计算属性computed,只实现了函数的get方法
+				computed: {
+            fullName() {
+                return this.firstName + "." + this.lastName
+						},
+						totalPrices() {
+                let result = 0
+								for (let i=0; i < this.books.length; i++) {
+								    result += this.books[i].price
+								}
+								return result
+						},
+						// 计算属性的本质，set,get方法，一般set方法不用，所以可以不写，只用实现get方法
+						allName: {
+                // 计算属性用不上set方法，所以可以不写,写了当调用app.allName=xxx,就能调用成功
+                set(newValue) {
+                    const name = newValue.split();  // split方法将字符串分割成列表的形式存储
+                    this.firstName = name[0];
+                    this.lastName = name[1];
+								},
+								get() {
+                    return this.firstName + '-' + this.lastName
+								}
+						}
+				}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<!--v-if, 通过v-if条件为true或者false决定渲染/不渲染-->
+	<h2 v-if="isShow">isShow为true时显示</h2>
+	<h2 v-else>isShow为false时显示</h2>
+	<h1>{{ result }}</h1>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+						isShow: false,
+						score: 88
+        },
+				computed: {
+            result() {
+                let showMessage = "";
+								if ( this.score >= 90) {
+								    showMessage = "特别优秀"
+								} else if ( this.score >= 80) {
+								    showMessage = "优秀"
+								} else if ( this.score >= 70) {
+								    showMessage = "良好"
+								} else {
+								    showMessage = "加油"
+								}
+								return showMessage
+						}
+				}
+    })
+</script>
+</body>
+</html>

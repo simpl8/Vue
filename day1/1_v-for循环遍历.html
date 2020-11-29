@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<h2>{{ message }}</h2>
+	<ul>
+		<!--v-for指令，迭代数据（数组，对象等）使用下标值,绑定key之后可提高中间插入元素的性能-->
+		<li v-for="(item,i) in language" :key="item">{{ i+1 }}-{{ item }}</li>
+	</ul>
+	<!--遍历对象-->
+	<ul>
+		<li v-for="(value, key) in info">{{ key }}: {{ value }}</li>
+		<li>{{ info.name }}</li>
+		<li>{{ info.age }}</li>
+		<li>{{ info.height }}</li>
+	</ul>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+		const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+			language: ['python', 'java', 'php', 'goLang'],
+			info: {
+            	name: "郭邦璐",
+				age: 28,
+				height: 168
+			}
+        }
+    })
+</script>
+</body>
+</html>

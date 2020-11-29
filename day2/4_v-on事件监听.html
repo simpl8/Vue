@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<!--v-on的语法糖写法@，事件监听时，方法内没有参数传递，可直接用函数名进行调用-->
+	<button @click="reduce">-</button>
+	<label>{{ counter }}</label>
+	<button @click="add">+</button>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+						counter: 0
+        },
+				methods: {
+            reduce() {
+                return this.counter--
+						},
+						add() {
+                return this.counter++
+						}
+				}
+    })
+</script>
+</body>
+</html>

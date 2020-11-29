@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<h2>{{ message }}</h2>
+	<!--使用v-if条件为true时渲染该元素,为for时是把该元素从dom中去除-->
+	<!--使用v-show时，是给元素添加一个行内样式，style = {display: none}}-->
+	<span v-if="isUser">
+		<!--label里边的for属性，将文字（用户名登录）聚焦到id="username"的输入框中 key绑定是否更换虚拟dom里边的缓存-->
+		<label for="username">用户名登录</label><br>
+		<input type="text" id="username" placeholder="用户名"  key="user" /><br>
+		<input type="password" name="password" placeholder="密码" />
+	</span>
+	<span v-else>
+		<label for="email">邮箱登录</label><br>
+	<input type="text" id="email" placeholder="邮箱"  key="email"/><br>
+	<input type="password" name="password" placeholder="密码" />
+	</span><br>
+	<button @click="isUser = !isUser">切换登录方式</button>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: '登录',
+			isUser: true
+        }
+    })
+</script>
+</body>
+</html>

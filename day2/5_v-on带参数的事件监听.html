@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<h2>{{ message }}</h2>
+	<!--在调用时，如何调用浏览器产生的event事件，通过$event-->
+	<button @click="btn1Click($event)">按钮1</button><br>
+	<button @click="btn2Click(3)">按钮2</button>
+	<label>{{ sum }}</label><br>
+	<!--阻止事件冒泡,@click.stop，stop修饰符-->
+	<div @click="divClick">
+		div<button @click.stop="btn3Click">按钮3</button><br>
+	</div>
+	<!--prevent修饰符,加上prevent修饰符后就不会自动提交form，通过手动提交-->
+	<form action="baidu">
+		<input type="submit" value="提交" @click.prevent="submitClick">
+	</form>
+  <!--监听某个键盘的键帽,.(键盘按键)绑定特定的键盘按键-->
+	<input type="text" @keyup.A="keyUp"><br>
+	<!--once修饰符，用于只在第一次使用生效的场景中使用-->
+	<button @click.once="btn4Click">按钮4</button>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+						sum: 0
+        },
+				methods: {
+            btn1Click(event) {
+                console.log(event)
+						},
+						// btn2Click(x), x为要接收的参数，从事件方法传递的参数中获取
+						btn2Click(x) {
+                return this.sum += x
+						},
+						divClick() {
+                console.log("divClick")
+						},
+						btn3Click() {
+                console.log('btn3Click')
+						},
+						// .once修饰监听事件按钮，只生效一次
+						btn4Click() {
+                console.log('btn4Click')
+						},
+						submitClick() {
+                console.log("submitClick")
+						},
+						keyUp() {
+                console.log('键盘在抬起A健的时候记录数据')
+						}
+
+				}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div id="app">
+	<!--style="{css属性名：css属性值(可以是一个表达式)(不加引号的时候改值为一个vue变量，加引号可直接解析css属性值的value)}"-->
+	<!--<h2 :style="{color: this.messageColor, fontSize: this.messageSize + 'px'}">{{ message }}</h2>-->
+	<!--把style抽成要给methods-->
+	<label :style="getStyles()">{{ message }}</label>
+</div>
+<script src="../../Vue/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello Vue',
+						messageColor: "red",
+						messageSize: 100
+        },
+				methods: {
+            getStyles() {
+                return {color: this.messageColor, fontSize: this.messageSize + 'px'}
+						}
+				}
+    })
+</script>
+</body>
+</html>
